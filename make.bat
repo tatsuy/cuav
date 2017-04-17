@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=source
 set BUILDDIR=build
-set SPHINXPROJ=cuav
+set SPHINXPROJ=CanberraUAV-Imaging
 
 if "%1" == "" goto help
 

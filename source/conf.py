@@ -47,7 +47,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'cuav'
+project = u'CanberraUAV Image Processing Tools (cuav)'
 copyright = u'2017, CanberraUAV'
 author = u'CanberraUAV'
 
@@ -84,7 +84,7 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -128,7 +128,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'cuav.tex', u'cuav Documentation',
+    (master_doc, 'cuav.tex', u'CanberraUAV Image Processing (cuav) Documentation',
      u'CanberraUAV', 'manual'),
 ]
 
@@ -138,7 +138,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'cuav', u'cuav Documentation',
+    (master_doc, 'CanberraUAV Image Processing (cuav)', u'CanberraUAV Image Processing (cuav) Documentation',
      [author], 1)
 ]
 
@@ -149,8 +149,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'cuav', u'cuav Documentation',
-     author, 'cuav', 'One line description of project.',
+    (master_doc, 'CanberraUAV Image Processing (cuav)', u'CanberraUAV Image Processing (cuav) Documentation',
+     author, 'CanberraUAV Image Processing (cuav)', 'One line description of project.',
      'Miscellaneous'),
 ]
 
