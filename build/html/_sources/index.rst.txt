@@ -7,14 +7,8 @@ Welcome to the CanberraUAV Image Processing (cuav) Documentation!
 =================================================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   :hidden:
+   
+   installing/index
+   getting_started/index
+   development/index
