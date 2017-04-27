@@ -86,7 +86,11 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Development</a><ul class="simple">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a><ul class="simple">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -135,8 +139,47 @@
             
   <div class="section" id="development">
 <h1>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h1>
-<p>The content goes here. Inline <code class="docutils literal"><span class="pre">code</span> <span class="pre">markup</span></code> here.</p>
+<p>The cuav source code is available from <a class="reference external" href="https://github.com/CanberraUAV/cuav">https://github.com/CanberraUAV/cuav</a></p>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<p>You will need to have <a class="reference external" href="http://www.python.org/download/releases/2.7/">Python
+2.7</a>
+and <a class="reference external" href="http://www.wxpython.org/download.php">wxPython</a> installed first.</p>
+<p>Next, open up a console in the Python scripts install path
+(<code class="file docutils literal"><span class="pre">C:\Python27\Scripts</span></code> or similar). Use <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">[filepath]</span></code> to install them</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy">numPY</a></li>
+<li><a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#pillow">Pillow (replaces
+PIL)</a></li>
+<li><a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#opencv">OpenCV 2</a></li>
+<li><a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml">lxml</a></li>
+<li><a class="reference external" href="https://launchpad.net/pyexiv2">pyexiv2</a></li>
+<li><a class="reference external" href="https://sourceforge.net/projects/mingw/files/latest/download">MinGW</a></li>
+<li><a class="reference external" href="https://sourceforge.net/projects/libjpeg-turbo/files/1.5.1/">libjpeg-turbo</a> (choose the libjpeg-turbo-1.5.1-gcc.exe file)</li>
+</ul>
+<p>After making the desired changes, cuav is required to be compiled
+into the Python directory (the modules won&#8217;t work otherwise).
+This needs to happen after any changes to the source code. See the
+<code class="file docutils literal"><span class="pre">./windows/geosearchbuildrun.bat</span></code> and
+<code class="file docutils literal"><span class="pre">./windows/geotagbuildrun.bat</span></code> scripts for information on how
+to build and run the cuav tools.</p>
+<p>To create a one-click windows installer for cuav, run <code class="docutils literal"><span class="pre">cuavWinBuild.bat</span></code>,
+which is in the <code class="docutils literal"><span class="pre">./windows</span></code> directory. The installer will be created in the
+<code class="docutils literal"><span class="pre">./windows/output</span></code> directory. The <a class="reference external" href="http://www.jrsoftware.org/isdl.php#stable">Inno Setup</a>
+program will be required for this process and is assumed to be installed in the
+<code class="docutils literal"><span class="pre">C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\Inno</span> <span class="pre">Setup</span> <span class="pre">5\</span></code> folder</p>
+</div>
+<div class="section" id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
+<p>Follow the user installation instructions as per the
+topic <a class="reference internal" href="../installing/index.html"><span class="doc">Installing</span></a> (minus the <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">cuav</span></code> step).</p>
+<p>After making the desired changes, cuav is required to be installed. This
+needs to happen after any changes to the source code. This can be done by:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span>
+</pre></div>
+</div>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 

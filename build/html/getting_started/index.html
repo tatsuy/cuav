@@ -86,7 +86,12 @@
             
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul class="simple">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pgm-converter-pgm-convert-py">PGM Converter (pgm_convert.py)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geotagger-geotag-py">Geotagger (geotag.py)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geosearch-geosearch-py">Geosearch (geosearch.py)</a><ul class="simple">
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
@@ -136,8 +141,242 @@
             
   <div class="section" id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<p>The content goes here. Inline <code class="docutils literal"><span class="pre">code</span> <span class="pre">markup</span></code> here.</p>
+<p>This section gives details on running the various tools that make up
+the cuav package.</p>
+<div class="section" id="pgm-converter-pgm-convert-py">
+<h2>PGM Converter (pgm_convert.py)<a class="headerlink" href="#pgm-converter-pgm-convert-py" title="Permalink to this headline">¶</a></h2>
+<p>This program converts images from pgm format to
+either jpeg or png format.</p>
+<p>The pgm file type is used by some camera models (such
+as the <a class="reference external" href="https://www.ptgrey.com/chameleon-usb2-cameras/">Ptgrey Chameleon</a>,
+used by CanberraUAV) to represent
+a raw bayer grid image.</p>
+<p>It has the follow options and arguments:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="39%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Description</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>directory</td>
+<td>Directory containing PGM image files</td>
+<td>(none)</td>
+</tr>
+<tr class="row-odd"><td>output-directory</td>
+<td>Directory to place converted files</td>
+<td>(same directory as input files)</td>
+</tr>
+<tr class="row-even"><td>format</td>
+<td>type of file to convert to (png or jpg)</td>
+<td>jpg</td>
+</tr>
+</tbody>
+</table>
+<img alt="../_images/pgm_conv1.png" src="../_images/pgm_conv1.png" />
+<img alt="../_images/pgm_conv2.png" src="../_images/pgm_conv2.png" />
+</div>
+<div class="section" id="geotagger-geotag-py">
+<h2>Geotagger (geotag.py)<a class="headerlink" href="#geotagger-geotag-py" title="Permalink to this headline">¶</a></h2>
+<p>This program adds geotags (longitude and latitude coordinates) to
+photos captured in-flight using a APM telemetry log (tlog) file to
+match the GPS location of the UAV at the time each photo was taken.</p>
+<p>The geotags are stored in the Exif data of each photo file.</p>
+<p>The &#8220;last modified&#8221; time of each image file is taken as it&#8217;s capture time.</p>
+<p>It has the follow options and arguments:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="39%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Description</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>files</td>
+<td>Directory containing png image files</td>
+<td>(none)</td>
+</tr>
+<tr class="row-odd"><td>mavlog</td>
+<td>Telemetry logfile (tlog)</td>
+<td>(none)</td>
+</tr>
+<tr class="row-even"><td>max-deltat</td>
+<td>Max deltat for interpolation</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td>max-attitude</td>
+<td>Max attitude geo-referencing</td>
+<td>45 degrees</td>
+</tr>
+<tr class="row-even"><td>lens</td>
+<td>Lens focal length</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>roll-stabilised</td>
+<td>Is camera roll stabilised?</td>
+<td>False</td>
+</tr>
+<tr class="row-even"><td>gps-lag</td>
+<td>GPS lag in seconds</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td>destdir</td>
+<td>Directory to place geotagged files</td>
+<td>(none)</td>
+</tr>
+<tr class="row-even"><td>inplace</td>
+<td>Modify image files in-place?</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<img alt="../_images/geotag1.png" src="../_images/geotag1.png" />
+<img alt="../_images/geotag2.png" src="../_images/geotag2.png" />
+</div>
+<div class="section" id="geosearch-geosearch-py">
+<h2>Geosearch (geosearch.py)<a class="headerlink" href="#geosearch-geosearch-py" title="Permalink to this headline">¶</a></h2>
+<p>This program searches a set of photos taken by a UAV and looks for any interesting
+or unusual objects (such as stranded people). Any candidate objects are georeferenced on a
+map and shown to the user.</p>
+<p>The overall objective is to quickly and easily find the location of a missing person, based on
+a set of photos taken overhead by a UAS.</p>
+<p>The algorithm used in geosearch is very conservative and will err on the side of cuation when deciding
+if an object is &#8220;interesting&#8221; enough to flag to the user. Thus it is expected that many false positives will
+be detected, at which point it will be up to the user to figure out if an image contains the desired person or
+object.</p>
+<p>The algorithm is tuned for finding person-sized and shaped objects that contrast well against the background. So a
+person laying down and wearing high-visibility clothing will be easily found. It has been (somewhat humourously) noted
+that sheep to fit in this category too.</p>
+<p>There are two ways of running geosearch:</p>
+<ol class="arabic simple">
+<li>With timestamped images and a flight log</li>
+<li>With geotagged images</li>
+</ol>
+<p>It has the follow options and arguments:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="44%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Description</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>files</td>
+<td>Directory containing png image files</td>
+<td>(none)</td>
+</tr>
+<tr class="row-odd"><td>mavlog</td>
+<td>Telemetry logfile (tlog)</td>
+<td>(none)</td>
+</tr>
+<tr class="row-even"><td>mission</td>
+<td>Waypoints text file for displaying mission</td>
+<td>(none)</td>
+</tr>
+<tr class="row-odd"><td>kmzlog</td>
+<td>Kmz file for image positions</td>
+<td>(none)</td>
+</tr>
+<tr class="row-even"><td>triggerlog</td>
+<td>Robota trigger file for image positions</td>
+<td>(none)</td>
+</tr>
+<tr class="row-odd"><td>time-offset</td>
+<td>Offset between camera and mavlink log times</td>
+<td>0 seconds</td>
+</tr>
+<tr class="row-even"><td>view</td>
+<td>Show images</td>
+<td>False</td>
+</tr>
+<tr class="row-odd"><td>saveview</td>
+<td>Save image view</td>
+<td>False</td>
+</tr>
+<tr class="row-even"><td>lens</td>
+<td>Lens focal length</td>
+<td>28</td>
+</tr>
+<tr class="row-odd"><td>sensorwidth</td>
+<td>Sensor (camera) width</td>
+<td>35 mm</td>
+</tr>
+<tr class="row-even"><td>service</td>
+<td>Map tile service</td>
+<td>MicrosoftSat</td>
+</tr>
+<tr class="row-odd"><td>camera-params</td>
+<td>Camera calibration json file from OpenCV</td>
+<td>(none)</td>
+</tr>
+<tr class="row-even"><td>debug</td>
+<td>Enable debug info</td>
+<td>False</td>
+</tr>
+<tr class="row-odd"><td>roll-stabilised</td>
+<td>Is camera roll stabilised?</td>
+<td>False</td>
+</tr>
+<tr class="row-even"><td>rotate-180</td>
+<td>Rotate images 180 degrees</td>
+<td>False</td>
+</tr>
+<tr class="row-odd"><td>altitude</td>
+<td>Altitude when images captured (0 for automatic)</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>thumbsize</td>
+<td>Thumbnail size</td>
+<td>60</td>
+</tr>
+<tr class="row-odd"><td>mosaic-thumbsize</td>
+<td>Mosiac thumbnail size</td>
+<td>35</td>
+</tr>
+<tr class="row-even"><td>minscore</td>
+<td>Minimum score for an image to be flagged</td>
+<td>100</td>
+</tr>
+<tr class="row-odd"><td>gammalog</td>
+<td>Gamma.log from flight</td>
+<td>(none)</td>
+</tr>
+<tr class="row-even"><td>target</td>
+<td>Lat,lon,radius of area to search</td>
+<td>(none)</td>
+</tr>
+<tr class="row-odd"><td>categories</td>
+<td>Xml file containing categories for classification</td>
+<td>(none)</td>
+</tr>
+<tr class="row-even"><td>flag</td>
+<td>Flag positions</td>
+<td>(none)</td>
+</tr>
+<tr class="row-odd"><td>blue-emphasis</td>
+<td>Enable blue emphasis in scanner</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 

@@ -85,7 +85,11 @@
             
             
                 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installing</a><ul class="simple">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a><ul class="simple">
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
@@ -136,8 +140,37 @@
             
   <div class="section" id="installing">
 <h1>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h1>
-<p>The content goes here. Inline <code class="docutils literal"><span class="pre">code</span> <span class="pre">markup</span></code> here.</p>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<p>For Windows users, the cuav software installer can be found at <a class="reference external" href="http://www.canberrauav.org.au/Tools/cuav/">http://www.canberrauav.org.au/Tools/cuav/</a>. The installer
+will create links to the software on the start menu.</p>
+</div>
+<div class="section" id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
+<p>For Debian based systems:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">libusb</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span> <span class="n">libdc1394</span><span class="o">-</span><span class="mi">22</span><span class="o">-</span><span class="n">dev</span> <span class="n">libjpeg</span><span class="o">-</span><span class="n">turbo8</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span><span class="o">-</span><span class="n">opencv</span> <span class="n">python</span><span class="o">-</span><span class="n">wxgtk3</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">future</span> <span class="n">gooey</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">cuav</span>
+</pre></div>
+</div>
+<p>For Fedora based systems:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">devel</span> <span class="n">python</span><span class="o">-</span><span class="n">opencv</span> <span class="n">wxPython</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">redhat</span><span class="o">-</span><span class="n">rpm</span><span class="o">-</span><span class="n">config</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">future</span> <span class="n">gooey</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">cuav</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">On some older Linux systems, <code class="docutils literal"><span class="pre">python-wxgtk3.0</span></code> may be instead named
+as <code class="docutils literal"><span class="pre">python-wxgtk2.8</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Cuav runs on the Python 2.7.x environment. Ensure your system is running
+the correct version of Python.</p>
+</div>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
