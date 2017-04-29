@@ -5,7 +5,7 @@ Installing
 Windows
 =======
 
-For Windows users, the cuav software installer can be found at http://www.canberrauav.org.au/Tools/cuav/. The installer
+For Windows users, the cuav software installer can be found at https://s3-ap-southeast-2.amazonaws.com/cuav/cuavSetup-1.3.3.exe. The installer
 will create links to the software on the start menu.
 
 Linux

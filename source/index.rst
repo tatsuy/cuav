@@ -1,24 +1,29 @@
-Welcome to the CanberraUAV Image Processing (cuav) Documentation!
-=================================================================
+Welcome to the CanberraUAV Image Processing Tools (cuav) Documentation!
+=======================================================================
 
-The CanberraUAV Image Processing (cuav) software is designed to quickly and
+The CanberraUAV Image Processing (cuav) tools are designed to quickly and
 accurately locate objects of interest from a large set of photos. With the addition
 of flight logs of geo-tagging, it can also give the location of the objects.
 
 It can be run in realtime directly from a camera, or offine from a folder of images.
 
-Cuav was created by CanberraUAV as part of the UAV Challenge, in order to find a missing
+The tools can be run on both Linux and Windows platforms.
+
+Cuav was created by `CanberraUAV <http://canberrauav.org.au/>`_ as part of the 
+`UAV Challenge <https://uavchallenge.org/>`_, in order to find a missing
 bushwalker from photos taken by a Unmanned Aerial System (UAS, commonly known as a "drone")
 as it flew over the search area at low altitude.
 
 This software is commonly used by UAS that are seach for unusual objects (such as people or
 livestock) on the ground.
 
-<photo>
+.. image:: Linuxcuav.png
 
 .. toctree::
    :hidden:
+   :maxdepth: 2
    
    installing/index
    getting_started/index
    development/index
+   cuavimagesource

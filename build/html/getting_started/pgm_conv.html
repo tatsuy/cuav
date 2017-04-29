@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; CanberraUAV Image Processing Tools (cuav) 1.3.3 documentation</title>
+  <title>PGM Converter (pgm_convert.py) &mdash; CanberraUAV Image Processing Tools (cuav) 1.3.3 documentation</title>
   
 
   
@@ -34,8 +34,9 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="CanberraUAV Image Processing Tools (cuav) 1.3.3 documentation" href="../index.html"/>
-        <link rel="next" title="PGM Converter (pgm_convert.py)" href="pgm_conv.html"/>
-        <link rel="prev" title="Installing" href="../installing/index.html"/> 
+        <link rel="up" title="Getting Started" href="index.html"/>
+        <link rel="next" title="Geotagger (geotag.py)" href="geotag.html"/>
+        <link rel="prev" title="Getting Started" href="index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,8 +87,8 @@
             
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pgm_conv.html">PGM Converter (pgm_convert.py)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting Started</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PGM Converter (pgm_convert.py)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="geotag.html">Geotagger (geotag.py)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="geosearch.html">Geosearch (geosearch.py)</a></li>
 </ul>
@@ -124,11 +125,13 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>Getting Started</li>
+          <li><a href="index.html">Getting Started</a> &raquo;</li>
+      
+    <li>PGM Converter (pgm_convert.py)</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/getting_started/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/getting_started/pgm_conv.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -138,21 +141,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="getting-started">
-<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<p>This section gives details on running the various tools that make up
-the cuav package.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pgm_conv.html">PGM Converter (pgm_convert.py)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geotag.html">Geotagger (geotag.py)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geosearch.html">Geosearch (geosearch.py)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="geosearch.html#starting">Starting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geosearch.html#running">Running</a></li>
-</ul>
-</li>
-</ul>
+  <div class="section" id="pgm-converter-pgm-convert-py">
+<h1>PGM Converter (pgm_convert.py)<a class="headerlink" href="#pgm-converter-pgm-convert-py" title="Permalink to this headline">¶</a></h1>
+<p>This program converts images from pgm format to
+either jpeg or png format.</p>
+<p>The pgm file type is used by some camera models (such
+as the <a class="reference external" href="https://www.ptgrey.com/chameleon-usb2-cameras/">Ptgrey Chameleon</a>,
+used by CanberraUAV) to represent
+a raw bayer grid image.</p>
+<p>It has the following options and arguments:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="39%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Description</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>--directory</td>
+<td>Directory containing PGM image files</td>
+<td>(none)</td>
+</tr>
+<tr class="row-odd"><td>--output-directory</td>
+<td>Directory to place converted files</td>
+<td>(same directory as input files)</td>
+</tr>
+<tr class="row-even"><td>--format</td>
+<td>type of file to convert to (png or jpg)</td>
+<td>jpg</td>
+</tr>
+</tbody>
+</table>
+<p>If no arguments are supplied, a GUI will appear asking for startup options.</p>
+<p>Otherwise, it can be started directly from the commandline. For example, In Linux:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">geotag</span><span class="o">.</span><span class="n">py</span> <span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">folder</span><span class="o">&gt;</span>
+<span class="n">geotag</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="nb">format</span><span class="o">=</span><span class="n">png</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">toconvert</span>
+</pre></div>
 </div>
+<img alt="../_images/pgm_conv1.png" src="../_images/pgm_conv1.png" />
+<img alt="../_images/pgm_conv2.png" src="../_images/pgm_conv2.png" />
 </div>
 
 
@@ -162,10 +194,10 @@ the cuav package.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pgm_conv.html" class="btn btn-neutral float-right" title="PGM Converter (pgm_convert.py)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="geotag.html" class="btn btn-neutral float-right" title="Geotagger (geotag.py)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../installing/index.html" class="btn btn-neutral" title="Installing" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="Getting Started" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
