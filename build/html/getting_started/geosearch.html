@@ -98,7 +98,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cuavimagesource.html">Image Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuavimagesource.html">Using the CanberraUAV Imagery Set</a></li>
 </ul>
 
             
@@ -164,8 +164,14 @@ that sheep to fit in this category too.</p>
 <p>There are two ways of running geosearch:</p>
 <ol class="arabic simple">
 <li>With timestamped images and a flight log (use <code class="docutils literal"><span class="pre">--mavlog</span></code> to specify log)</li>
-<li>With geotagged images</li>
+<li>With geotagged images (in jpg or png file format). Geotag format must be as per <a class="reference external" href="http://www.exiv2.org/tags.html">http://www.exiv2.org/tags.html</a></li>
 </ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The geotags must contain the following tags: Exif.GPSInfo.GPS.LatitudeRef, Exif.GPSInfo.GPS.LongitudeRef,
+Exif.GPSInfo.GPS.Latitude, Exif.GPSInfo.GPS.Longitude</p>
+<p class="last">Optionally: Exif.GPSInfo.GPS.Altitude, Exif.Image.DateTime</p>
+</div>
 <p>It has the following options and arguments:</p>
 <table border="1" class="docutils">
 <colgroup>

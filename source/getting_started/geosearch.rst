@@ -24,7 +24,15 @@ There are two ways of running geosearch:
 
 #. With timestamped images and a flight log (use ``--mavlog`` to specify log)
 
-#. With geotagged images
+#. With geotagged images (in jpg or png file format). Geotag format must be as per http://www.exiv2.org/tags.html
+
+.. note::
+
+    The geotags must contain the following tags: Exif.GPSInfo.GPS.LatitudeRef, Exif.GPSInfo.GPS.LongitudeRef, 
+    Exif.GPSInfo.GPS.Latitude, Exif.GPSInfo.GPS.Longitude
+
+    Optionally: Exif.GPSInfo.GPS.Altitude, Exif.Image.DateTime
+
 
 It has the following options and arguments:
 
