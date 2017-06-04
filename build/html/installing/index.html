@@ -94,7 +94,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cuavimagesource.html">Image Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cuavimagesource.html">Using the CanberraUAV Imagery Set</a></li>
 </ul>
 
             
@@ -150,7 +150,8 @@ will create links to the software on the start menu.</p>
 <div class="section" id="linux">
 <h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
 <p>For Debian based systems:</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">libusb</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span> <span class="n">libdc1394</span><span class="o">-</span><span class="mi">22</span><span class="o">-</span><span class="n">dev</span> <span class="n">libjpeg</span><span class="o">-</span><span class="n">turbo8</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span><span class="o">-</span><span class="n">opencv</span> <span class="n">python</span><span class="o">-</span><span class="n">wxgtk3</span><span class="o">.</span><span class="mi">0</span>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">libusb</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span> <span class="n">libdc1394</span><span class="o">-</span><span class="mi">22</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libjpeg</span><span class="o">-</span><span class="n">turbo8</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span><span class="o">-</span><span class="n">opencv</span> <span class="n">python</span><span class="o">-</span><span class="n">wxgtk3</span><span class="o">.</span><span class="mi">0</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">future</span> <span class="n">gooey</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">cuav</span>
 </pre></div>
@@ -160,6 +161,11 @@ will create links to the software on the start menu.</p>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">future</span> <span class="n">gooey</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">cuav</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">On Raspian, <code class="docutils literal"><span class="pre">libjpeg-turbo8-dev</span></code> is instead named
+as <code class="docutils literal"><span class="pre">libturbojpeg1-dev</span></code>.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>

@@ -17,7 +17,8 @@ For Debian based systems:
 
 .. code:: bash
 
-    sudo apt-get install python-pip libusb-1.0.0-dev libdc1394-22-dev libjpeg-turbo8-dev python-opencv python-wxgtk3.0
+    sudo apt-get install python-pip libusb-1.0.0-dev libdc1394-22-dev 
+    sudo apt-get install libjpeg-turbo8-dev python-opencv python-wxgtk3.0
     pip install numpy future gooey
     pip install cuav
     
@@ -28,6 +29,11 @@ For Fedora based systems:
     sudo dnf install python-devel python-opencv wxPython python-pip redhat-rpm-config
     pip install numpy future gooey
     pip install cuav
+ 
+.. note::
+
+    On Raspian, ``libjpeg-turbo8-dev`` is instead named
+    as ``libturbojpeg1-dev``.
     
 .. note::
 
