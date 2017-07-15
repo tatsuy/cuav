@@ -38,7 +38,7 @@ def load_image(filename):
     grey = numpy.zeros((960,1280), dtype='uint8')
     scanner.rebayer(array, grey)
     return grey
-    
+
 
 def capture(h, timeout, img):
     global continuous_mode, trigger_time, frame_rate, frame_counter, fake, last_frame_time
@@ -73,6 +73,8 @@ def capture(h, timeout, img):
         raise chameleon.error("timeout waiting for fake image")
     last_frame_time = frame_time
     try:
+        print filename
+        print os.path.curdir
         fake_img = load_image(filename)
     except Exception, msg:
         raise chameleon.error('missing %s' % fake)
