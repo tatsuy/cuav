@@ -279,9 +279,8 @@ int main(int argc, const char *argv[])
 
         char *ppm_name = NULL;
         asprintf(&ppm_name, "%s.ppm", basename);        
-        free(ppm_name);
-        
         save_ppm(rgb8, ppm_name);
+        free(ppm_name);
     }
 
     return 0;
