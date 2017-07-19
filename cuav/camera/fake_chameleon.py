@@ -38,7 +38,7 @@ def load_image(filename):
     grey = numpy.zeros((960,1280), dtype='uint8')
     scanner.rebayer(array, grey)
     return grey
-    
+
 
 def capture(h, timeout, img):
     global continuous_mode, trigger_time, frame_rate, frame_counter, fake, last_frame_time
@@ -51,12 +51,16 @@ def capture(h, timeout, img):
     while True:
         try:
             filename = os.path.realpath(fake)
+            print "filename:"
+            print filename
         except Exception:
             filename = fake
             pass
         if filename != fake:
             break
     frame_time = cuav_util.parse_frame_time(filename)
+    print "frame_time:"
+    print frame_time
     while (frame_time == last_frame_time or frame_time == 0) and timeout > 0:
         timeout -= 10
         time.sleep(0.01)
@@ -73,13 +77,17 @@ def capture(h, timeout, img):
         raise chameleon.error("timeout waiting for fake image")
     last_frame_time = frame_time
     try:
+        print filename
+        print os.path.curdir
         fake_img = load_image(filename)
+        print "hoge"
     except Exception, msg:
         raise chameleon.error('missing %s' % fake)
     frame_counter += 1
     img.data = fake_img.data
     if continuous_mode:
         trigger_time = time.time()
+    print "comp capture"
     return trigger_time, frame_counter, 0
 
 def close(h):
