@@ -138,7 +138,7 @@ class BlockCancel(StampedCommand):
     def __init__(self, blockid):
         StampedCommand.__init__(self)
         self.blockid = blockid
-        
+
 
 class CameraModule(mp_module.MPModule):
     def __init__(self, mpstate):
@@ -198,7 +198,7 @@ class CameraModule(mp_module.MPModule):
               MPSetting('aircraft_address2', str, None, 'Aircraft Address2', tab='GCS'),
               MPSetting('aircraft_port', int, 7544, 'Aircraft Port', range=(1, 30000), increment=1),
               MPSetting('aircraft_port2', int, 7544, 'Aircraft Port', range=(1, 30000), increment=1),
-              
+
               MPSetting('bandwidth',  int, 40000, 'Link1 Bandwdith', 'Comms'),
               MPSetting('bandwidth2', int, 40000, 'Link2 Bandwidth'),
               MPSetting('quality', int, 85, 'Compression Quality', range=(1,100), increment=1),
@@ -214,13 +214,13 @@ class CameraModule(mp_module.MPModule):
               MPSetting('minspeed', int, 4, 'Min vehicle speed to save images'),
 
               MPSetting('minscore', int, 100, 'Min Score Link1', range=(0,5000), increment=1, tab='Scoring'),
-              MPSetting('packet_loss', int, 0, 'Packet Loss', range=(0,100), increment=1, tab='Misc'),             
-              MPSetting('packet_loss2', int, 0, 'Link2 Packet Loss', range=(0,100), increment=1, tab='Misc'),             
-              MPSetting('clock_sync', bool, False, 'GPS Clock Sync'),             
+              MPSetting('packet_loss', int, 0, 'Packet Loss', range=(0,100), increment=1, tab='Misc'),
+              MPSetting('packet_loss2', int, 0, 'Link2 Packet Loss', range=(0,100), increment=1, tab='Misc'),
+              MPSetting('clock_sync', bool, False, 'GPS Clock Sync'),
 
               MPSetting('brightness', float, 1.0, 'Display Brightness', range=(0.1, 10), increment=0.1,
                         digits=2, tab='Display'),
-              MPSetting('debug', bool, False, 'debug enable'),             
+              MPSetting('debug', bool, False, 'debug enable'),
               ],
             title='Camera Settings'
             )
@@ -250,7 +250,7 @@ class CameraModule(mp_module.MPModule):
         self.transmit_queue = Queue.Queue()
         self.viewing = False
         self.have_set_gps_time = False
-        
+
         self.c_params = CameraParams(lens=4.0)
         self.jpeg_size = 0
         self.xmit_queue = 0
@@ -275,7 +275,7 @@ class CameraModule(mp_module.MPModule):
         self.framerate = 0
         self.last_minscore = None
         self.last_heartbeat = time.time()
-        
+
         # setup directory for images
         if self.logdir is None:
             self.camera_dir = "camera"
@@ -318,9 +318,9 @@ class CameraModule(mp_module.MPModule):
             print("stopped camera capture")
         elif args[0] == "status":
             print("Cap imgs:%u err:%u scan:%u fr:%.3f regions:%u jsize:%.0f xmitq:%u/%u lst:%u sq:%.1f eff:%.2f/%.2f" % (
-                self.capture_count, self.error_count, self.scan_count, 
+                self.capture_count, self.error_count, self.scan_count,
                 self.framerate,
-                self.region_count, 
+                self.region_count,
                 self.jpeg_size,
                 self.xmit_queue, self.xmit_queue2, self.frame_loss, self.scan_queue.qsize(),
                 self.efficiency, self.efficiency2))
@@ -383,7 +383,7 @@ class CameraModule(mp_module.MPModule):
 
     def get_base_time(self):
         '''we need to get a baseline time from the camera. To do that we trigger
-        in single shot mode until we get a good image, and use the time we 
+        in single shot mode until we get a good image, and use the time we
         triggered as the base time'''
         frame_time = None
         error_count = 0
@@ -444,7 +444,7 @@ class CameraModule(mp_module.MPModule):
         last_successful_capture = None
 
         while not self.unload_event.wait(0.02):
-            if not self.running:            
+            if not self.running:
                 if h is not None:
                     chameleon.close(h)
                     h = None
@@ -478,7 +478,7 @@ class CameraModule(mp_module.MPModule):
                 self.check_camera_parms()
 
                 capture_time = time.time()
-                
+
                 # capture an image
                 frame_time, frame_counter, shutter = chameleon.capture(h, 1000, im)
                 if frame_time < last_capture_frame_time:
@@ -495,7 +495,7 @@ class CameraModule(mp_module.MPModule):
                 self.process_counter += 1
                 if self.process_counter % self.camera_settings.process_divider != 0:
                     continue
-                
+
                 if self.camera_settings.use_capture_time:
                     img_time = capture_time
                 else:
@@ -536,7 +536,9 @@ class CameraModule(mp_module.MPModule):
             rawname = "raw%s" % cuav_util.frame_time(frame_time)
             frame_count += 1
             if self.camera_settings.save_pgm != 0 and self.flying:
+                print("save_pgm 1")
                 if frame_count % self.camera_settings.save_pgm == 0:
+                    print("save_pgm 2")
                     chameleon.save_pgm('%s/%s.pgm' % (raw_dir, rawname), im)
 
     def scan_thread(self):
@@ -561,7 +563,7 @@ class CameraModule(mp_module.MPModule):
                 if altitude < self.camera_settings.minalt:
                     altitude = self.camera_settings.minalt
                 scan_parms['MetersPerPixel'] = self.camera_settings.mpp100 * altitude / 100.0
-            
+
             t1 = time.time()
             im_full = numpy.zeros((960,1280,3),dtype='uint8')
             im_640 = numpy.zeros((480,640,3),dtype='uint8')
@@ -709,7 +711,7 @@ class CameraModule(mp_module.MPModule):
                 for r in regions:
                     lowscore = min(lowscore, r.score)
                     highscore = max(highscore, r.score)
-                
+
                 if self.camera_settings.transmit:
                     # send a region message with thumbnails to the ground station
                     thumb_img = cuav_mosaic.CompositeThumbnail(cv.GetImage(cv.fromarray(im_full)),
@@ -742,7 +744,7 @@ class CameraModule(mp_module.MPModule):
         jpeg = scanner.jpeg_compress(img, self.camera_settings.qualitysend)
 
         # keep filtered image size
-        self.jpeg_size = 0.95 * self.jpeg_size + 0.05 * len(jpeg)        
+        self.jpeg_size = 0.95 * self.jpeg_size + 0.05 * len(jpeg)
 
         pkt = ImagePacket(frame_time, jpeg, self.xmit_queue, pos, priority)
         self.send_object(pkt, priority=priority)
@@ -766,7 +768,7 @@ class CameraModule(mp_module.MPModule):
                     thumbs = cuav_mosaic.ExtractThumbs(composite, len(regions))
                     mosaic.add_regions(regions, thumbs, last_joe.image_filename, last_joe.pos)
                 except Exception:
-                    pass                
+                    pass
                 regions = []
                 last_joe = None
                 last_thumbfile = None
@@ -857,7 +859,7 @@ class CameraModule(mp_module.MPModule):
                 if view_window:
                     view_window = False
                 continue
-        
+
             tnow = time.time()
             if tnow - ack_time > 0.1:
                 self.bsend.tick(packet_count=1000, max_queue=self.camera_settings.maxqueue1)
@@ -942,7 +944,7 @@ class CameraModule(mp_module.MPModule):
                 self.frame_loss = obj.frame_loss
                 self.xmit_queue = obj.xmit_queue
                 thumb_count += 1
-            
+
                 self.console.set_status('Lost', 'Lost %u' % self.frame_loss, row=6)
                 self.console.set_status('Regions', 'Regions %u' % region_count, row=6)
                 self.console.set_status('XMITQ', 'XMITQ %.0f' % self.xmit_queue, row=6)
@@ -978,7 +980,7 @@ class CameraModule(mp_module.MPModule):
                     else:
                         tag_color = (0,255,0)
                     mosaic.tag_image(obj.frame_time, tag_color=tag_color)
-                    
+
                 cv.ConvertScale(display_img, display_img, scale=self.camera_settings.brightness)
                 img_window.set_image(display_img, bgr=True)
 
@@ -1062,7 +1064,7 @@ class CameraModule(mp_module.MPModule):
             print('REMOTE: %s' % obj.response)
 
         if isinstance(obj, ImageRequest):
-            self.handle_image_request(obj, bsend)            
+            self.handle_image_request(obj, bsend)
 
         if isinstance(obj, ChangeCameraSetting):
             self.camera_settings.set(obj.name, obj.value)
@@ -1121,6 +1123,7 @@ class CameraModule(mp_module.MPModule):
         rawname = "raw%s" % cuav_util.frame_time(obj.frame_time)
         raw_dir = os.path.join(self.camera_dir, "raw")
         filename = '%s/%s.pgm' % (raw_dir, rawname)
+        print("handle_image_request start %s, %s, %s" % (rawname, raw_dir, filename))
         if not os.path.exists(filename):
             print("No file: %s" % filename)
             return

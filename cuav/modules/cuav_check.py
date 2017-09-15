@@ -268,7 +268,7 @@ class CUAVModule(mp_module.MPModule):
             self.console.set_status('RFind', 'RFind: %.1fm %uft' % (dist, dist*3.28084), row=8)
 
         if m.get_type() == "VFR_HUD":
-            flying = False
+            flying = True
             if self.status.flightmode == "AUTO" or m.airspeed > 20 or m.groundspeed > 10:
                 flying = True
             #if flying and self.settings.mavfwd != 0:
