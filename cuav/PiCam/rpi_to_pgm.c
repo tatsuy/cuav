@@ -75,14 +75,16 @@ static void extract_raw10(int fd, uint16_t width, uint16_t height, uint16_t raw_
 {
     uint8_t data[raw_stride];
 
-    for (uint16_t row=0; row<height; row++) {
+    uint16_t row=0
+    for (; row<height; row++) {
         uint16_t *raw = &bayer->data[row][0];
         if (read(fd, data, raw_stride) != raw_stride) {
             printf("read error\n");
             exit(1);
         }
         uint8_t *dp = &data[0];
-        for (uint16_t col=0; col<width; col+=4, dp+=5) {
+        uint16_t col=0
+        for (; col<width; col+=4, dp+=5) {
             // the top two bits are packed into byte 4 of each group
             raw[col+0] = dp[0] << 2 | (dp[4]&3);
             raw[col+1] = dp[1] << 2 | ((dp[4]>>2)&3);
@@ -101,7 +103,8 @@ static void save_pgm(const struct bayer_image *bayer, const char *fname)
         exit(1);
     }
     fprintf(f, "P5\n%u %u\n65535\n", IMG_WIDTH, IMG_HEIGHT);
-    for (uint16_t y=0; y<IMG_HEIGHT; y++) {
+    uint16_t y=0
+    for (; y<IMG_HEIGHT; y++) {
         uint16_t row[IMG_WIDTH];
         swab(&bayer->data[y][0], &row[0], IMG_WIDTH*2);
         if (fwrite(&row[0], IMG_WIDTH*2, 1, f) != 1) {
@@ -139,8 +142,10 @@ static void debayer_BGGR(const struct bayer_image *bayer, struct rgb16_image *rg
       B G B G
       G R G R
     */
-    for (uint16_t y=1; y<IMG_HEIGHT-2; y += 2) {
-        for (uint16_t x=1; x<IMG_WIDTH-2; x += 2) {
+    uint16_t y=1
+    for (; y<IMG_HEIGHT-2; y += 2) {
+    uint16_t x=1
+        for (; x<IMG_WIDTH-2; x += 2) {
             rgb->data[y+0][x+0].r = bayer->data[y+0][x+0];
             rgb->data[y+0][x+0].g = ((uint16_t)bayer->data[y-1][x+0] + (uint16_t)bayer->data[y+0][x-1] +
                                      (uint16_t)bayer->data[y+1][x+0] + (uint16_t)bayer->data[y+0][x+1]) >> 2;
@@ -181,7 +186,8 @@ static void rgb16_to_rgb8(const struct rgb16_image *rgb16, struct rgb8_image *rg
 {
     const struct rgb16 *d = &rgb16->data[0][0];
     uint16_t highest = 0;
-    for (uint32_t i=0; i<IMG_WIDTH*IMG_HEIGHT; i++) {
+    uint32_t i=0
+    for (; i<IMG_WIDTH*IMG_HEIGHT; i++) {
         if (d[i].r > highest) {
             highest = d[i].r;
         }
@@ -193,8 +199,10 @@ static void rgb16_to_rgb8(const struct rgb16_image *rgb16, struct rgb8_image *rg
         }
     }
     float scale = 255.0 / highest;
-    for (uint16_t y=0; y<IMG_HEIGHT; y++) {
-        for (uint16_t x=0; x<IMG_WIDTH; x++) {
+    uint16_t y=0
+    for (; y<IMG_HEIGHT; y++) {
+    uint16_t x=0
+        for (; x<IMG_WIDTH; x++) {
             rgb8->data[y][x].r = rgb16->data[y][x].r * scale;
             rgb8->data[y][x].g = rgb16->data[y][x].g * scale;
             rgb8->data[y][x].b = rgb16->data[y][x].b * scale;
@@ -257,8 +265,9 @@ int main(int argc, const char *argv[])
     bayer = malloc(sizeof(*bayer));
     rgb16 = malloc(sizeof(*rgb16));
     rgb8 = malloc(sizeof(*rgb8));
-        
-    for (uint8_t i=1; i<argc; i++) {
+
+    uint8_t i=1
+    for (; i<argc; i++) {
         const char *fname = argv[i];
         char *basename = strdup(fname);
         char *p = strchr(basename, '.');
