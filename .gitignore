@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.o
 *~
 *.png
@@ -13,3 +14,20 @@ MANIFEST
 deb_dist/
 logs/
 .idea
+=======
+*.o
+*~
+*.png
+*.pnm
+*.pgm
+*.jpg
+*.yuv
+*.pyc
+*.lst
+build/
+dist/
+MANIFEST
+deb_dist/
+logs/
+.idea
+>>>>>>> master
