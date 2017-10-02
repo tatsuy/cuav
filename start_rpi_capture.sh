@@ -4,7 +4,7 @@ set -e
 set -x
 
 # wait 30 seconds to allow APWeb to set system time from the GPS
-sleep 30
+# sleep 30
 
 QUALITY=100
 
@@ -26,9 +26,11 @@ then
     mkdir ${IMAGE_DIR}
 fi
 
+ln -s latest_img.jpg fake_chameleon.pgm
+
 ## TODO: check param, ISO:400
 while [ 1 ]; do
-    raspistill -n -r -ISO 400 -q $QUALITY -v -dt -t 3600000 -tl 3500 -o ${IMAGE_DIR}/%dZ.jpg
+    raspistill -n -r -l latest_img.jpg -ISO 400 -q $QUALITY -v -dt -t 3600000 -tl 3500 -o ${IMAGE_DIR}/%dZ.jpg
     echo "*************** raspistill exited, restarting ******************"
     sleep 1
 done

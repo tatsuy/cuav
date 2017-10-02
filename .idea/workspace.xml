@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3a302795-9af3-497b-a644-0d5890bd539f" name="Default" comment="" />
+    <list default="true" id="3a302795-9af3-497b-a644-0d5890bd539f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/start_rpi_capture.sh" afterPath="$PROJECT_DIR$/start_rpi_capture.sh" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,17 +90,17 @@
         <entry file="file://$PROJECT_DIR$/start_rpi_capture.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <caret line="32" column="38" lean-forward="false" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cuav_check.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cuav/modules/cuav_check.py">
+      <file leaf-file-name="rpi_img_cap.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rpi_img_cap.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4624">
-              <caret line="276" column="0" lean-forward="false" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
+            <state relative-caret-position="119">
+              <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -134,6 +137,7 @@
       <find>Getting camare base_time</find>
       <find>capture_continuous</find>
       <find>for (</find>
+      <find>latest_img</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -156,8 +160,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="66" />
-    <option name="y" value="15" />
+    <option name="x" value="401" />
+    <option name="y" value="4" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -265,7 +269,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="66" y="15" width="1400" height="1000" extended-state="0" />
+    <frame x="401" y="4" width="1400" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24927746" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -297,13 +301,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tools/udpproxy.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -684,10 +681,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/rpi_img_cap.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/start_rpi_capture.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <caret line="32" column="38" lean-forward="false" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
           <folding />
         </state>
       </provider>
