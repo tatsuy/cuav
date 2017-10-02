@@ -9,18 +9,18 @@ set moddebug 2
 module load map
 module load cuav.modules.camera
 module load cuav.modules.cuav_check
-camera set use_bsend2 1
+camera set use_bsend2 0
 camera set bandwidth 130000
 camera set bandwidth2 750
 camera set altitude 0
-camera set gcs_slave 192.168.16.34
-camera set aircraft_address 192.168.16.4
+#camera set gcs_slave 192.168.16.34
+camera set aircraft_address 192.168.111.1
 camera set camparms cuav/cuav/data/calibration_images_2014/ChameleonArecort/params.json
 set moddebug 2
 camera view
 module load output
-output add 192.168.16.30:14550
-output add 192.168.16.34:14550
+#output add 192.168.16.30:14550
+#output add 192.168.16.34:14550
 module load tracker
 tracker set port 127.0.0.1:1234
 module load speech

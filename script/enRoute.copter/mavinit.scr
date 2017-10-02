@@ -3,12 +3,12 @@ set streamrate -1
 set streamrate2 -1
 set moddebug 1
 module load cuav.modules.camera
-camera set use_bsend2 1
+camera set use_bsend2 0
 camera set bandwidth2 750
 camera set send2_divider 5
-camera set gcs_address 192.168.16.15
-camera set minscore 5000
-camera set minscore2 5000
+camera set gcs_address 192.168.111.3
+camera set minscore 50
+#camera set minscore2 5000
 camera set send2 1
 camera set bandwidth 130000
 camera set blue_emphasis 1
