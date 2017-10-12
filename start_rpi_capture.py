@@ -5,10 +5,11 @@ from picamera import PiCamera
 
 image_tail = "jpg"
 image_format = "jpeg" # for picamera capture func
-save_dir = "camera/raw"
-fake_org_tail = "pgm"
+save_dir = "images"
+#save_dir = "camera/raw"
+fake_org_tail = "jpg"
 fake_name = "fake_chameleon.pgm"
-fake_dir = "."
+fake_dir = "/home/apsync/GitHub/cuav"
 pgm_command = "./cuav/PiCam/rpi_to_pgm"
 
 def camera_setup(camera):
