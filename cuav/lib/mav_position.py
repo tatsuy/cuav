@@ -330,29 +330,25 @@ def exif_position(filename):
 
         See: http://stackoverflow.com/questions/10799366/geotagging-jpegs-with-pyexiv2
         '''
-        import pyexiv2
+        from pyexiv2 import Image
         global _last_position
         
-        m = pyexiv2.ImageMetadata(filename)
-        m.read()
+        img = Image(filename)
+        m = img.read_exif()
         GPS = 'Exif.GPSInfo.GPS'
-        try:
-                lat_ns = str(m[GPS + 'LatitudeRef'].value)
-                lng_ns = str(m[GPS + 'LongitudeRef'].value)
-                latitude = dms_to_decimal(m[GPS + 'Latitude'].value[0],
-                                          m[GPS + 'Latitude'].value[1],
-                                          m[GPS + 'Latitude'].value[2],
-                                          lat_ns)
-                longitude = dms_to_decimal(m[GPS + 'Longitude'].value[0],
-                                           m[GPS + 'Longitude'].value[1],
-                                           m[GPS + 'Longitude'].value[2],
-                                           lng_ns)
-        except Exception:
-                latitude = 0
-                longitude = 0
+        lat_ns = str(m[GPS + 'LatitudeRef'])
+        lng_ns = str(m[GPS + 'LongitudeRef'])
+        latitude = dms_to_decimal(eval(m[GPS + 'Latitude'].split(' ')[0]),
+                                  eval(m[GPS + 'Latitude'].split(' ')[1]),
+                                  eval(m[GPS + 'Latitude'].split(' ')[2]),
+                                  lat_ns)
+        longitude = dms_to_decimal(eval(m[GPS + 'Longitude'].split(' ')[0]),
+                                   eval(m[GPS + 'Longitude'].split(' ')[1]),
+                                   eval(m[GPS + 'Longitude'].split(' ')[2]),
+                                   lng_ns)
                 
 
-        altitude = float(m[GPS + 'Altitude'].value)
+        altitude = float(eval(m[GPS + 'Altitude']))
 
         timestamp = (os.path.splitext(os.path.basename(filename))[0])
         m = re.search("\d", timestamp)
