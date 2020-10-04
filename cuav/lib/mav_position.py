@@ -353,7 +353,7 @@ def exif_position(filename):
         timestamp = (os.path.splitext(os.path.basename(filename))[0])
         m = re.search("\d", timestamp)
         if m :
-            timestamp = timestamp[m.start():]
+            timestamp = timestamp[m.start():].split('_')[0] + '00Z'
         
         frame_time = datetime.datetime.strptime(timestamp, "%Y%m%d%H%M%S%fZ")
         frame_time = cuav_util.datetime_to_float(frame_time)
@@ -476,7 +476,7 @@ class TriggerPosition(object):
                 timestamp = (os.path.splitext(os.path.basename(imagename))[0])
                 m = re.search("\d", timestamp)
                 if m :
-                    timestamp = timestamp[m.start():]
+                    timestamp = timestamp[m.start():].split('_')[0] + '00Z'
                 
                 frame_time = datetime.datetime.strptime(timestamp, "%Y%m%d%H%M%S%fZ")
                 frame_time = cuav_util.datetime_to_float(frame_time)

@@ -82,7 +82,7 @@ def process(args):
     timestamp = (os.path.splitext(os.path.basename(f))[0])
     m = re.search("\d", timestamp)
     if m :
-        timestamp = timestamp[m.start():]
+        timestamp = timestamp[m.start():].split('_')[0] + '00Z'
     
     frame_time = datetime.datetime.strptime(timestamp, "%Y%m%d%H%M%S%fZ")
     frame_time = mav_position.datetime_to_float(frame_time)
