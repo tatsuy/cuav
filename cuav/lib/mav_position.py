@@ -325,7 +325,7 @@ def decimal_to_dms(decimal):
 
 _last_position = None
 
-def exif_position(filename):
+def exif_position(filename, args_yaw):
         '''get a MavPosition from exif tags
 
         See: http://stackoverflow.com/questions/10799366/geotagging-jpegs-with-pyexiv2
@@ -362,7 +362,9 @@ def exif_position(filename):
         except ValueError:
             frame_time = 0
 
-        if _last_position is None:
+        if args_yaw >= 0:
+            yaw = args_yaw
+        elif _last_position is None:
                 yaw = 0
         else:
                 yaw = cuav_util.gps_bearing(_last_position.lat, _last_position.lon,
