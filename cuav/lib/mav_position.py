@@ -350,14 +350,18 @@ def exif_position(filename):
 
         altitude = float(eval(m[GPS + 'Altitude']))
 
-        timestamp = (os.path.splitext(os.path.basename(filename))[0])
-        m = re.search("\d", timestamp)
-        if m :
-            timestamp = timestamp[m.start():].split('_')[0] + '00Z'
-        
-        frame_time = datetime.datetime.strptime(timestamp, "%Y%m%d%H%M%S%fZ")
-        frame_time = cuav_util.datetime_to_float(frame_time)
-        
+        try:
+            timestamp = (os.path.splitext(os.path.basename(filename))[0])
+            m = re.search("\d", timestamp)
+            if m:
+                timestamp = timestamp[m.start():].split('_')[0] + '00Z'
+
+            frame_time = datetime.datetime.strptime(
+                timestamp, "%Y%m%d%H%M%S%fZ")
+            frame_time = cuav_util.datetime_to_float(frame_time)
+        except ValueError:
+            frame_time = 0
+
         if _last_position is None:
                 yaw = 0
         else:

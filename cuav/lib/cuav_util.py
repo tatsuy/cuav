@@ -270,14 +270,17 @@ def datetime_to_float(d):
 def parse_frame_time(filename):
     '''parse a image frame time from a image filename
     '''
-    timestamp = (os.path.splitext(os.path.basename(filename))[0])
-    m = re.search("\d", timestamp)
-    if m :
-        timestamp = timestamp[m.start():].split('_')[0] + '00Z'
-    
-    frame_time = datetime.datetime.strptime(timestamp, "%Y%m%d%H%M%S%fZ")
-    t = datetime_to_float(frame_time)
-    
+    try:
+        timestamp = (os.path.splitext(os.path.basename(filename))[0])
+        m = re.search("\d", timestamp)
+        if m:
+            timestamp = timestamp[m.start():].split('_')[0] + '00Z'
+
+        frame_time = datetime.datetime.strptime(timestamp, "%Y%m%d%H%M%S%fZ")
+        t = datetime_to_float(frame_time)
+    except ValueError:
+            t = 0
+
     return t
 
 
